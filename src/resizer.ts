@@ -50,7 +50,10 @@ class Resizer {
   public static defaultOptions: IResizerOptions = {
     width: 8,
     maxWdt: this.container.clientWidth//最大宽度
-    minWdt: 0
+    minWdt: 0,
+    start: function(){
+
+    }
   };
 
   /**
@@ -211,6 +214,15 @@ class Resizer {
   }
 
   /**
+   * 设置最大宽度
+   * @public
+   * @method Resizer#setMaxWdt
+   */
+  public setMaxWdt(maxWdt): void {
+    this.options.maxWdt = maxWdt;
+  }
+
+  /**
    * @private
    * @method Resizer#setup
    */
@@ -304,6 +316,7 @@ class Resizer {
    */
   private onUp(e: MouseEvent): void {
     e.preventDefault();
+    this.options.start();
     if (this.dragging) {
       this.setHandleX(e.pageX - this.container.getBoundingClientRect().left - this.offsetX);
       this.setDragging(false);
