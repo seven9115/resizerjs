@@ -49,6 +49,7 @@ class Resizer {
    */
   public static defaultOptions: IResizerOptions = {
     width: 8,
+    maxWdt: this.container.clientWidth//最大宽度
   };
 
   /**
@@ -269,8 +270,11 @@ class Resizer {
     if (value < 0) {
       value = 0;
     }
-    if (value > this.container.clientWidth) {
-      value = this.container.clientWidth;
+    /**
+	 * 限制最大宽度
+	 */
+    if (value > this.options.maxWdt) {
+      value = this.options.maxWdt;
     }
     this.ghost.style.left = `${value}px`;
     return this.handleX = value;
