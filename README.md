@@ -49,10 +49,11 @@ Create an instance of Resizer. Use a CSS selector of the container element as th
 ```javascript
 const myResizer = new Resizer(el,options);
 el:绑定的节点 例：'.container'
-options:参数配置 例：{width:8,maxWdt:600,minWdt:300}
+options:参数配置 例：{width:8,maxWdt:600,minWdt:300,startFn}
 width:边框宽度
 minWdt:缩放最小宽度
 maxWdt:缩放最大宽度
+startFn:拖动开始回调函数 例：start:function(){myResizer.setMaxWdt(800)}
 ```
 
 ##### HTML
