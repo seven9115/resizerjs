@@ -49,7 +49,7 @@ class Resizer {
    */
   public static defaultOptions: IResizerOptions = {
     width: 8,
-    maxWdt: this.container.clientWidth//最大宽度
+    maxWdt: 0//最大宽度
     minWdt: 0,
     start: function(){
 
@@ -192,6 +192,9 @@ class Resizer {
   ) {
     this.options = Object.assign(Resizer.defaultOptions, this.resizerOptions, {});
     this.container = Resizer.getElement(containerSelector);
+    if(!this.options.maxWdt){
+        this.options.maxWdt = this.container.clientWidth;
+    }
     this.target = this.container.firstElementChild as HTMLElement;
 
     if (this.container.Resizer) {
@@ -301,6 +304,7 @@ class Resizer {
    */
   private onDown(e: MouseEvent): void {
     e.preventDefault();
+    this.options.start();
     if (!this.dragging) {
       this.offsetX = e.offsetX;
       this.setHandleX(e.pageX - this.container.getBoundingClientRect().left - this.offsetX);
@@ -316,7 +320,6 @@ class Resizer {
    */
   private onUp(e: MouseEvent): void {
     e.preventDefault();
-    this.options.start();
     if (this.dragging) {
       this.setHandleX(e.pageX - this.container.getBoundingClientRect().left - this.offsetX);
       this.setDragging(false);
