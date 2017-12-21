@@ -47,7 +47,12 @@ Create an instance of Resizer. Use a CSS selector of the container element as th
 ##### JavaScript
 
 ```javascript
-const myResizer = new Resizer('.container');
+const myResizer = new Resizer(el,options);
+el:绑定的节点 例：'.container'
+options:参数配置 例：{width:8,maxWdt:600,minWdt:300}
+width:边框宽度
+minWdt:缩放最小宽度
+maxWdt:缩放最大宽度
 ```
 
 ##### HTML
