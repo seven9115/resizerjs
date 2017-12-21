@@ -49,7 +49,7 @@ class Resizer {
    */
   public static defaultOptions: IResizerOptions = {
     width: 8,
-    maxWdt: 0//最大宽度
+    maxWdt: 0,//最大宽度
     minWdt: 0,
     start: function(){
 
