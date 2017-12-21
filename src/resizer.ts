@@ -50,6 +50,7 @@ class Resizer {
   public static defaultOptions: IResizerOptions = {
     width: 8,
     maxWdt: this.container.clientWidth//最大宽度
+    minWdt: 0
   };
 
   /**
@@ -267,8 +268,8 @@ class Resizer {
    * @param {number} value
    */
   private setHandleX(value: number): number {
-    if (value < 0) {
-      value = 0;
+    if (value < this.options.minWdt) {
+      value = this.options.minWdt;
     }
     /**
 	 * 限制最大宽度
